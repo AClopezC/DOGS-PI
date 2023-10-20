@@ -1,0 +1,12 @@
+.page {
+   background-image: url('../utils/images/landing.jpg');
+   background-position: center;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+}

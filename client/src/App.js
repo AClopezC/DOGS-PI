@@ -1,11 +1,22 @@
-import './App.css';
+import './App.css'
+import {Route, BrowserRouter, Switch} from 'react-router-dom'
+import Landing from './Landing/Landing'
+import Home from './views/Home/Home'
+import CardDetail from './components/CardDetail/CardDetail'
+import FormPage from './views/FormPage/FormPage'
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Henry Dogs</h1>
-    </div>
-  );
+export default function App() {
+   return (
+      <div>
+         <BrowserRouter>
+            <Switch>
+               <Route exact path={'/'} component={Landing} />
+               <Route path={'/home'} component={Home} />
+               <Route path={'/detail/:id'} component={CardDetail} />
+               <Route path={'/create'} component={FormPage} />
+
+            </Switch>
+         </BrowserRouter>
+      </div>
+   );
 }
-
-export default App;

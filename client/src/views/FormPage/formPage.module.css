@@ -1,0 +1,56 @@
+/* Estilo para el contenedor principal */
+.div {
+   font-family: Arial, sans-serif;
+   margin: 20px;
+}
+
+/* Estilo para el formulario */
+.form {
+   display: flex;
+   flex-direction: column;
+   max-width: 400px;
+   margin: 0 auto;
+}
+
+/* Estilo para los labels y los campos de entrada */
+.label {
+   font-weight: bold;
+   margin-top: 10px;
+}
+
+.input {
+   padding: 5px;
+   margin: 5px 0;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   font-size: 14px;
+}
+
+/* Estilo para el mensaje de error */
+.error {
+   color: red;
+   font-size: 12px;
+}
+
+/* Estilo para el botón de envío */
+.input[type="submit"] {
+   background-color: #007BFF;
+   color: #fff;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-size: 16px;
+   margin-top: 10px;
+}
+
+/* Estilo para el encabezado h1 y h3 */
+.h1 {
+   font-size: 24px;
+   margin-bottom: 10px;
+}
+
+.h3 {
+   font-size: 18px;
+   margin-bottom: 20px;
+}

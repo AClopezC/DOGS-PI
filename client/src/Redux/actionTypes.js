@@ -1,0 +1,15 @@
+export const GET_ALL_DOGS = "GET_ALL_DOGS";
+export const GET_ALL_DOGS_BY_ID = "GET_ALL_DOGS_BY_ID";
+export const CLEAN_DOGS = "CLEAN_DOGS";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
+export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
+export const GET_ALL_TEMPERAMENTS = "GET_ALL_TEMPERAMENTS";
+export const FILTER_BY_TEMPERAMENT = "FILTER_BY_TEMPERAMENT";
+
+// export const CREATE_DOG = "CREATE_DOG";
+
+
+
+
+
+
