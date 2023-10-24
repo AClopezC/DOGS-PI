@@ -5,8 +5,11 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const GET_ALL_TEMPERAMENTS = "GET_ALL_TEMPERAMENTS";
 export const FILTER_BY_TEMPERAMENT = "FILTER_BY_TEMPERAMENT";
-
-// export const CREATE_DOG = "CREATE_DOG";
+export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
+export const SORTING_ABC = "SORTING_ABC"; 
+export const SORTING_BY_WEIGHT = "SORTING_BY_WEIGHT"; 
+export const CREATE_DOG = "CREATE_DOG";
+export const MOVING_PAGE = "MOVING_PAGE";
 
 
 

@@ -7,7 +7,11 @@ import {
    SEARCH_BY_NAME,
    GET_ALL_TEMPERAMENTS,
    FILTER_BY_TEMPERAMENT,
-   // CREATE_DOG
+   FILTER_BY_ORIGIN,
+   SORTING_ABC,
+   SORTING_BY_WEIGHT,
+   CREATE_DOG,
+   MOVING_PAGE
 } from './actionTypes';
 
 export const getAllDogs = () => {
@@ -65,7 +69,7 @@ export const getAllTemperaments = () => {
 export const filterByTemperament = (temperament) => {
    return async (dispatch) => {
       try {
-         const { data } = await axios.get(`http://localhost:3001/temperaments/${temperament}`);
+         const data  = await temperament;
          return dispatch({ type: FILTER_BY_TEMPERAMENT, payload: data })
       } catch (error) {
          throw error
@@ -73,14 +77,53 @@ export const filterByTemperament = (temperament) => {
    }
 };
 
-// export const createDog = () => {
-//    return async (dispatch) => {
-//       try {
-//          const data = 
-//          return dispatch({type: CREATE_DOG, payload: data})
+export const filterByOrigin = (origin) => {
+   return async (dispatch) => {
+      try {
+         return dispatch({ type: FILTER_BY_ORIGIN, payload: origin })
+      } catch (error) {
+         throw error
+      }
+   }
+};
+
+export const sortingABC = (sortAbc) => {
+   return async (dispatch) => {
+      try {
+         return dispatch({ type: SORTING_ABC, payload: sortAbc })
+      } catch (error) {
          
-//       } catch (error) {
-//          throw error
-//       }
-//    }
-// };
+      }
+   }
+};
+
+export const sortingByWeight = (sortW) => {
+   return async (dispatch) => {
+      try {
+         return dispatch({ type: SORTING_BY_WEIGHT, payload: sortW })
+      } catch (error) {
+         
+      }
+   }
+};
+
+export const createDog = (state) => {
+   return async (dispatch) => {
+      try {
+         const { data } = await axios.post('http://localhost:3001/create', state);
+         return dispatch({ type: CREATE_DOG, payload: data });
+      } catch (error) {
+         throw error
+      }
+   }
+};
+
+export const movingPage = (order) => {
+   return async (dispatch) => {
+      try {
+         return dispatch({type: MOVING_PAGE, payload: order})
+      } catch (error) {
+         throw error
+      }
+   }
+}

@@ -33,7 +33,7 @@
 }
 
 /* Estilo para el botón de envío */
-.input[type="submit"] {
+.inputSubmit {
    background-color: #007BFF;
    color: #fff;
    padding: 10px 20px;

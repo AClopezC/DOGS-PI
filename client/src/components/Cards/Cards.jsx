@@ -2,7 +2,15 @@ import Card from "../Card/Card";
 import SearchBar from "../SearchBar/SearchBar";
 import { useEffect, useState } from "react"
 import {useDispatch, useSelector} from 'react-redux';
-import { cleanDogs, getAllDogs, getAllTemperaments, filterByTemperament } from "../../Redux/actions";
+import {
+   cleanDogs,
+   getAllDogs,
+   getAllTemperaments,
+   filterByTemperament,
+   filterByOrigin,
+   sortingABC,
+   sortingByWeight,
+} from "../../Redux/actions";
 
 
 export default function Cards() {
@@ -21,7 +29,7 @@ export default function Cards() {
    //? FILTRO POR TEMPERAMENTO.
    const [temperament, setTemperament] = useState('');
 
-   const handleChangeSelect = (event) => {
+   const handleChange = (event) => {
       setTemperament(event.target.value)
    };
 
@@ -33,7 +41,6 @@ export default function Cards() {
 
    //? FILTRO POR ORIGEN.
    const [origin, setOrigin] = useState('');
-   // const [filteredDogs, setFilteredDogs] = useState([]);
 
    const handleChangeOrigin = (event) => {
       setOrigin(event.target.value);
@@ -41,19 +48,35 @@ export default function Cards() {
 
    const handleFilterOrigin = () => {
       if (origin) {
-         if (origin === 'API') {
-            return dogs.filter((dog) => {
-               return dog.created === false;
-            });
-         }
-         else if (origin === 'DB') {
-            return dogs.filter((dog) => {
-               return dog.created === true;
-            });
-         }
+         dispatch(filterByOrigin(origin));
        }
    };
 
+   //? ORDENAMIENTO ALFABÉTICO.
+   const [sortAbc, setSortAbc] = useState('');
+
+   const handleChangeABC = (event) => {
+      setSortAbc(event.target.value);
+   };
+
+   const handleSortingABC = () => {
+      if (sortAbc) {
+         dispatch(sortingABC(sortAbc));
+       }
+   };
+
+   //? ORDENAMIENTO POR PESO.
+   const [sortW, setSortW] = useState('');
+
+   const handleChangeW = (event) => {
+      setSortW(event.target.value);
+   };
+
+   const handleSortingW = () => {
+      if (sortW) {
+         dispatch(sortingByWeight(sortW));
+       }
+   };
 
    //? LIMPIAR EL HOME.
    const handleClean = () => {
@@ -62,7 +85,7 @@ export default function Cards() {
       //? Setear el select del temperamento.
    };
 
-
+   
 
    return (
     <div>
@@ -70,7 +93,7 @@ export default function Cards() {
          <SearchBar />
 
         <label htmlFor="temperament">Filtrar por temperamento</label>
-        <select name="temperament" id="temperament" onChange={handleChangeSelect}>
+        <select name="temperament" id="temperament" onChange={handleChange}>
                <option value="">Seleccione un temperamento</option>
                {
                   temperamentos.map((temp) => (
@@ -83,7 +106,7 @@ export default function Cards() {
          </div>
          <div>
             <label htmlFor="origin">Filtrar por origen</label>
-            <select name='origin' onChange={handleChangeOrigin}>
+            <select name='origin' id='origin' onChange={handleChangeOrigin}>
                <option value="">Seleccione un origen</option>
                <option value="API">API</option>
                <option value="DB">Base de datos</option>
@@ -91,14 +114,23 @@ export default function Cards() {
             <button onClick={handleFilterOrigin}>Filtrar</button>
             <button onClick={handleClean}>Clean Home</button>
          </div>
-      <div>
-        <label htmlFor="">Ordenar alfabéticamente</label>
-        <button>A-Z</button>
-        <button>Z-A</button>
-
-            <label htmlFor="">Ordenar por peso</label>
-            <button>ASC-DESC</button>
-            <button>DESC-ASC</button>
+         <div>
+            <label htmlFor="sorting">Ordenar alfabéticamente</label>
+            <select name="sorting" id="sorting" onChange={handleChangeABC}>
+               <option value="">Seleccione un orden</option>
+               <option value="A-Z">A-Z</option>
+               <option value="Z-A">Z-A</option>
+            </select>
+            <button onClick={handleSortingABC}>Ordenar</button>
+         </div>
+         <div>
+            <label htmlFor="sortingW">Ordenar por peso</label>
+            <select name="sortingW" id="sortingW" onChange={handleChangeW}>
+               <option value="">Seleccione un orden</option>
+               <option value="ASC">ASC</option>
+               <option value="DESC">DESC</option>
+            </select>
+            <button onClick={handleSortingW}>Ordenar</button>
          </div>
          <div>
             {

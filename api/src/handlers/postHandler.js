@@ -6,7 +6,7 @@ const createDogHandler = async (req, res) => {
       const { imagen, nombre, altura, peso, añosDeVida, temperamento } = req.body;
       
       if (!imagen || !nombre || !altura || !peso || !añosDeVida || !temperamento) {
-         return res.status(400).json({ error: 'Please, provide de complete information' });
+         return res.status(400).json({ error: 'Please, provide the complete information' });
       }
       else {
          const creating = await createDog(imagen, nombre, altura, peso, añosDeVida, temperamento);

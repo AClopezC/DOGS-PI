@@ -19,8 +19,8 @@ export default function CardDetail() {
    return (
       <div>
          <NavBar/>
-         <h4>{detail?.id}</h4>
-         <h1>{detail?.nombre}</h1>
+         <h4>ID: {detail?.id}</h4>
+         <h1>RAZA: {detail?.nombre}</h1>
          <img src={detail?.imagen} alt={detail?.nombre} />
          <h3>Altura: {detail?.altura}</h3>
          <h3>Peso: {detail?.peso}</h3>
