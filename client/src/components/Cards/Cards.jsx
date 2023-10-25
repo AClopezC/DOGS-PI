@@ -10,7 +10,9 @@ import {
    filterByOrigin,
    sortingABC,
    sortingByWeight,
+   movingPage
 } from "../../Redux/actions";
+import style from './cards.module.css'
 
 
 export default function Cards() {
@@ -85,15 +87,26 @@ export default function Cards() {
       //? Setear el select del temperamento.
    };
 
-   
+   const currentPage = useSelector(state => state.currentPage);
+
+   //? PAGINADO
+      const pagination = (event) => {
+         dispatch(movingPage(event.target.name))
+      }
 
    return (
-    <div>
+    <div className={style.page}>
          <div>
+            <div>
+               <label className={style.label}>Page: {currentPage + 1}</label>
+               <br />
+               <button className={style.button} name='prev' onClick={pagination}>Prev</button>
+               <button className={style.button} name='next' onClick={pagination}>Next</button>
+            </div>
          <SearchBar />
 
-        <label htmlFor="temperament">Filtrar por temperamento</label>
-        <select name="temperament" id="temperament" onChange={handleChange}>
+        <label className={style.label} htmlFor="temperament">Filtrar por temperamento</label>
+        <select className={style.select} name="temperament" id="temperament" onChange={handleChange}>
                <option value="">Seleccione un temperamento</option>
                {
                   temperamentos.map((temp) => (
@@ -101,42 +114,41 @@ export default function Cards() {
                   ))
                }
         </select>
-            <button onClick={handleFilterByTemperament}>Filtrar</button>
-            <button onClick={handleClean}>Clean Home</button>
+            <button className={style.button} onClick={handleFilterByTemperament}>Filtrar</button>
+            <button className={style.button} onClick={handleClean}>Clean Home</button>
          </div>
          <div>
-            <label htmlFor="origin">Filtrar por origen</label>
-            <select name='origin' id='origin' onChange={handleChangeOrigin}>
+            <label className={style.label} htmlFor="origin">Filtrar por origen</label>
+            <select className={style.select} name='origin' id='origin' onChange={handleChangeOrigin}>
                <option value="">Seleccione un origen</option>
                <option value="API">API</option>
                <option value="DB">Base de datos</option>
             </select>
-            <button onClick={handleFilterOrigin}>Filtrar</button>
-            <button onClick={handleClean}>Clean Home</button>
+            <button className={style.button} onClick={handleFilterOrigin}>Filtrar</button>
+            <button className={style.button} onClick={handleClean}>Clean Home</button>
          </div>
          <div>
-            <label htmlFor="sorting">Ordenar alfabéticamente</label>
-            <select name="sorting" id="sorting" onChange={handleChangeABC}>
+            <label className={style.label} htmlFor="sorting">Ordenar alfabéticamente</label>
+            <select className={style.select} name="sorting" id="sorting" onChange={handleChangeABC}>
                <option value="">Seleccione un orden</option>
                <option value="A-Z">A-Z</option>
                <option value="Z-A">Z-A</option>
             </select>
-            <button onClick={handleSortingABC}>Ordenar</button>
+            <button className={style.button} onClick={handleSortingABC}>Ordenar</button>
          </div>
          <div>
-            <label htmlFor="sortingW">Ordenar por peso</label>
-            <select name="sortingW" id="sortingW" onChange={handleChangeW}>
+            <label className={style.label} htmlFor="sortingW">Ordenar por peso</label>
+            <select className={style.select} name="sortingW" id="sortingW" onChange={handleChangeW}>
                <option value="">Seleccione un orden</option>
                <option value="ASC">ASC</option>
                <option value="DESC">DESC</option>
             </select>
-            <button onClick={handleSortingW}>Ordenar</button>
+            <button className={style.button} onClick={handleSortingW}>Ordenar</button>
          </div>
-         <div>
-            {
-               Array.isArray(dogs) ? (
-                  dogs.map(dog => {
-                  return <Card
+         <div className={style.cards}>
+            {Array.isArray(dogs) && dogs.length > 0 ? (
+               dogs.map(dog => (
+                  <Card
                      key={dog.id}
                      id={dog.id}
                      imagen={dog.imagen}
@@ -144,11 +156,12 @@ export default function Cards() {
                      temperamento={dog.temperamento}
                      peso={dog.peso}
                   />
-                  })
-               ) : (
-                     alert('No se encontraron perros por el nombre proporcionado')
-               )
-            }
+               ))
+            ) : (
+               <p className={style.errorMessage}>
+                  No se encontraron perros por el nombre proporcionado
+               </p>
+            )}
          </div>
       </div>
    )

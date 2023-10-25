@@ -53,7 +53,7 @@ export default function reducer(state = initialState, { type, payload }) {
       case GET_ALL_TEMPERAMENTS:
          return {
             ...state,
-            temperaments: payload
+            temperaments: payload,
          };
       case FILTER_BY_TEMPERAMENT:
          return {

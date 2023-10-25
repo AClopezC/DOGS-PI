@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
+import style from './navBar.module.css';
 
 export default function NavBar() {
    return (
-      <div>
+      <div className={style.navbar}>
          <Link to='/'>
-            <button>Landing</button>
+            <button className={style.button}>Landing</button>
          </Link>
          <Link to='/home'>
-            <button>Home</button>
+            <button className={style.button}>Home</button>
          </Link>
          <Link to='/create'>
-            <button>Formulario</button>
+            <button className={style.button}>Formulario</button>
          </Link>
       </div>
    )

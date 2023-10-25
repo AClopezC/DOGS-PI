@@ -1,0 +1,33 @@
+/* home.module.css */
+
+.page {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   color: #fff;
+   font-family: 'Arial', sans-serif;
+}
+
+.label {
+   font-size: 1rem;
+   margin: 10px 0;
+}
+
+.button {
+   background-color: #f7c13e;
+   color: #fff;
+   font-size: 1rem;
+   border: none;
+   padding: 8px 15px;
+   border-radius: 5px;
+   cursor: pointer;
+   margin: 0 5px;
+   transition: background-color 0.3s;
+}
+
+.button:hover {
+   background-color: #e6ab32;
+}

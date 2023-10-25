@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from 'react-redux';
 import { getAllDogs, searchByName } from "../../Redux/actions";
+import style from './searchBar.module.css';
 
 export default function SearchBar() {
    
@@ -25,11 +26,11 @@ export default function SearchBar() {
    };
 
    return (
-      <div>
-         <label>Busca un perro por su raza</label>
-         <input onChange={handleChange} type="text" />
-         <button onClick={handleSearchByName}>Search</button>
-         <button onClick={handleClean}>Clean Home</button>
+      <div className={style.search}>
+         <label className={style.label}>Busca un perro por su raza</label>
+         <input className={style.input} onChange={handleChange} type="text" />
+         <button className={style.button} onClick={handleSearchByName}>Search</button>
+         <button className={style.button} onClick={handleClean}>Clean Home</button>
       </div>
    )
 }
